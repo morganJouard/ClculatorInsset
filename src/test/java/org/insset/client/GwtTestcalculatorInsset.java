@@ -1,4 +1,4 @@
-package org.insset.client;
+lpackage org.insset.client;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.junit.client.GWTTestCase;
