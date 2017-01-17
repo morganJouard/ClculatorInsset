@@ -52,7 +52,9 @@ public class FieldVerifier {
      * @return true if valid, false if invalid
      */
     public static boolean isValidDecimal(Integer nbr) {
-        //Implement your code
+        if (nbr <= 0 || nbr >= 2000) {
+            return false;
+        }
         return true;
     }
 
@@ -62,7 +64,13 @@ public class FieldVerifier {
     }
 
     public static boolean isValidDate(String date) {
-        //Implement your code
+//        if(!date.matches("\\d{2}(-|\\/)\\d{2}(-|\\/)\\d{4}")) {
+//            return false;
+//        }
+        if ((date == null) || (date.isEmpty())) {
+            return false;
+        }
+        
         return true;
     }
 }

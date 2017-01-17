@@ -10,6 +10,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.insset.client.service.RomanConverterService;
 
 /**
@@ -41,8 +43,14 @@ public class RomanConverterServiceImpl extends RemoteServiceServlet implements
 
     @Override
     public String convertDateYears(String nbr) throws IllegalArgumentException {
-        //Implement your code
-        return "XV/III/MX";
+        String resultat = "";
+      
+        String[] date = nbr.split("\\/|-");
+        resultat = convertArabeToRoman(Integer.valueOf(date[0])) + 
+                "/" + convertArabeToRoman(Integer.valueOf(date[1]))+
+                "/" + convertArabeToRoman(Integer.valueOf(date[2]));
+         
+        return resultat;
     }
 
     @Override
@@ -53,11 +61,6 @@ public class RomanConverterServiceImpl extends RemoteServiceServlet implements
 
     @Override
     public String convertArabeToRoman(Integer input) throws IllegalArgumentException {
-     
-        if (input <= 0 || input >= 2000) {
-            return "Le nombre est incorrect, il doit être entre 1 et 2000";
-        }
-        
         String string = "";
         
         for(Integer i : correspondanceRomainDecimal.keySet()) {
