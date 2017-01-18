@@ -16,7 +16,7 @@ import org.insset.client.service.RomanConverterService;
 public class RomanConverterServiceImpl extends RemoteServiceServlet implements
         RomanConverterService {
 
-    static String convertitEnDecimal(java.lang.String romanNumber) {
+    static String convertToDecimal(java.lang.String romanNumber) {
         int decimal = 0;
         int lastNumber = 0;
         String romanNumeral = romanNumber.toUpperCase();
@@ -149,7 +149,7 @@ public class RomanConverterServiceImpl extends RemoteServiceServlet implements
     @Override
     public Integer convertRomanToArabe(String nbr) throws IllegalArgumentException {
         //Implement your code
-        return new Integer(convertitEnDecimal(nbr));
+        return new Integer(convertToDecimal(nbr));
     }
 
     @Override
