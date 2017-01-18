@@ -19,7 +19,7 @@
             </g:FlowPanel>
             <g:FlowPanel >
                 
-                <g:ResetButton ui:field="boutonClearR" text="Clear"/>
+                <g:ResetButton ui:field="boutonClearR" text="Reset"/>
             </g:FlowPanel>
         </g:FlowPanel>
         <g:FlowPanel>
@@ -37,7 +37,7 @@
             </g:FlowPanel>
             <g:FlowPanel>
                 
-                <g:ResetButton ui:field="boutonClearA" text="Clear"/>
+                <g:ResetButton ui:field="boutonClearA" text="Reset"/>
             </g:FlowPanel>
         </g:FlowPanel>
         <g:FlowPanel>
@@ -55,7 +55,7 @@
             </g:FlowPanel>
             <g:FlowPanel>
                 
-                <g:ResetButton ui:field="boutonClearD" text="Clear"/>
+                <g:ResetButton ui:field="boutonClearD" text="Reset"/>
             </g:FlowPanel>
         </g:FlowPanel>
       <!--</g:Form>-->

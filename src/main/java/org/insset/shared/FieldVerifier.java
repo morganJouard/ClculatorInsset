@@ -48,11 +48,15 @@ public class FieldVerifier {
      * ensure that usernames, passwords, email addresses, URLs, and other fields
      * have the proper syntax.
      *
-     * @param name the name to validate
+     * @param nbr the name to validate
      * @return true if valid, false if invalid
      */
     public static boolean isValidDecimal(Integer nbr) {
-        //Implement your code
+        
+        if(nbr <= 0 || nbr > 2000 || nbr == null) {
+             return false;
+        }   
+        
         return true;
     }
 
@@ -62,7 +66,10 @@ public class FieldVerifier {
     }
 
     public static boolean isValidDate(String date) {
-        //Implement your code
+        if(!date.matches("\\d{2}(-|\\/)\\d{2}(-|\\/)\\d{4}")) {
+            return false;
+        }
+        
         return true;
     }
 }
