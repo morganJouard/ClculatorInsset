@@ -53,6 +53,7 @@ public class CalculatorDecimalPresenter extends Composite {
     @UiField
     public Label errorLabelD;
 
+
     interface MainUiBinder extends UiBinder<HTMLPanel, CalculatorDecimalPresenter> {
     }
 
@@ -147,7 +148,8 @@ public class CalculatorDecimalPresenter extends Composite {
         if (!FieldVerifier.isValidRoman(valA.getText())) {
             errorLabelAToR.addStyleName("serverResponseLabelError");
             errorLabelAToR.setText("Format incorect");
-            return;
+
+            return ;
         }
         service.convertArabeToRoman(Integer.parseInt(valA.getText()), new AsyncCallback<String>() {
             public void onFailure(Throwable caught) {
