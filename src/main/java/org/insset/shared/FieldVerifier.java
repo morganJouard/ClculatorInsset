@@ -56,7 +56,6 @@ public class FieldVerifier {
         if(nbr <= 0 || nbr > 2000 || nbr == null) {
              return false;
         }   
-        
         return true;
     }
 
@@ -66,6 +65,7 @@ public class FieldVerifier {
     }
 
     public static boolean isValidDate(String date) {
+
         if(!date.matches("\\d{2}(-|\\/)\\d{2}(-|\\/)\\d{4}")) {
             return false;
         }

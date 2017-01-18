@@ -40,10 +40,6 @@ public class RomanConverterServiceImpl extends RemoteServiceServlet implements
 
     @Override
     public String convertDateYears(String nbr) throws IllegalArgumentException {
-        
-        System.out.println("ici");
-        System.out.println(nbr);
-        
         String resultat = "";
       
         String[] date = nbr.split("\\/|-");

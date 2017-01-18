@@ -20,7 +20,7 @@ public class RomanConverterServiceImplTest {
         String resExpected = "XII";
         String result = instance.convertArabeToRoman(12);
         
-        assertEquals("Test good convertion arabe to roman", resExpected, result);
+        assertEquals(resExpected, result);
     }
     
     @Test
