@@ -75,7 +75,7 @@ public class RomanConverterServiceImpl extends RemoteServiceServlet implements
         }
     }
 
-    public static String convertitEnRomains(int input) {
+    public static String convertToRoman(int input) {
         if (input < 1 || input > 2000) {
             return "Veuillez entrer un nombre entre 1 et 2000";
         }
@@ -137,10 +137,13 @@ public class RomanConverterServiceImpl extends RemoteServiceServlet implements
 
     @Override
     public String convertDateYears(String nbr) throws IllegalArgumentException {
-        String jour = nbr.substring(0, 2);
-        String mois = nbr.substring(3, 5);
-        String annee = nbr.substring(6, 10);
-        return "XV/III/MX";
+        Integer day = Integer.parseInt(nbr.substring(0, 2));
+        Integer month = Integer.parseInt(nbr.substring(3, 5));
+        Integer year = Integer.parseInt(nbr.substring(6, 10));
+        String romanDay = convertToRoman(day);
+        String romanMonth = convertToRoman(month);
+        String romanYear = convertToRoman(year);
+        return new String(romanDay+'/'+romanMonth+'/'+romanYear);
     }
 
     @Override
@@ -152,7 +155,7 @@ public class RomanConverterServiceImpl extends RemoteServiceServlet implements
     @Override
     public String convertArabeToRoman(Integer nbr) throws IllegalArgumentException {
         //Implement your code
-        return new String(convertitEnRomains(nbr));
+        return new String(convertToRoman(nbr));
     }
 
 }
