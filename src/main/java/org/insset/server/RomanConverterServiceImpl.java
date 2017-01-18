@@ -15,14 +15,14 @@ import org.insset.client.service.RomanConverterService;
 @SuppressWarnings("serial")
 public class RomanConverterServiceImpl extends RemoteServiceServlet implements
         RomanConverterService {
-    
+
     static String convertitEnDecimal(java.lang.String romanNumber) {
         int decimal = 0;
         int lastNumber = 0;
         String romanNumeral = romanNumber.toUpperCase();
         /* operation to be performed on upper cases even if user 
-           enters roman values in lower case chars */
-        for (int x = romanNumeral.length() - 1; x >= 0 ; x--) {
+         enters roman values in lower case chars */
+        for (int x = romanNumeral.length() - 1; x >= 0; x--) {
             char convertToDecimal = romanNumeral.charAt(x);
 
             switch (convertToDecimal) {
@@ -61,10 +61,10 @@ public class RomanConverterServiceImpl extends RemoteServiceServlet implements
                     lastNumber = 1;
                     break;
             }
-            
+
         }
         return Integer.toString(decimal);
-        
+
     }
 
     public static int processDecimal(int decimal, int lastNumber, int lastDecimal) {
@@ -74,85 +74,72 @@ public class RomanConverterServiceImpl extends RemoteServiceServlet implements
             return lastDecimal + decimal;
         }
     }
-    
-     static String additif(int x, char un, char cinq) {
-        String s = "";
-        if (x >= 5) {
-            s = s + cinq;
-        }
-        switch (x % 5) {
-            case 1:
-                s = s + un;
-                break;
-            case 2:
-                s = s + un + un;
-                break;
-            case 3:
-                s = s + un + un + un;
-                break;
-            case 4:
-                s = s + un + un + un + un;
-                break;
-        }
-        return s;
-    }
 
-    static String soustractif(int x, char un, char cinq, char dix) {
+    public static String convertitEnRomains(int input) {
+        if (input < 1 || input > 2000) {
+            return "Veuillez entrer un nombre entre 1 et 2000";
+        }
         String s = "";
-        switch (x) {
-            case 0:
-                s = "";
-                break;
-            case 1:
-                s = s + un;
-                break;
-            case 2:
-                s = s + un + un;
-                break;
-            case 3:
-                s = s + un + un + un;
-                break;
-            case 4:
-                s = s + un + cinq;
-                break;
-            case 5:
-                s = s + cinq;
-                break;
-            case 6:
-                s = s + cinq + un;
-                break;
-            case 7:
-                s = s + cinq + un + un;
-                break;
-            case 8:
-                s = s + cinq + un + un + un;
-                break;
-            case 9:
-                s = s + un + dix;
-                break;
-            default: s = "???";
+        while (input >= 1000) {
+            s += "M";
+            input -= 1000;
+        }
+        while (input >= 900) {
+            s += "CM";
+            input -= 900;
+        }
+        while (input >= 500) {
+            s += "D";
+            input -= 500;
+        }
+        while (input >= 400) {
+            s += "CD";
+            input -= 400;
+        }
+        while (input >= 100) {
+            s += "C";
+            input -= 100;
+        }
+        while (input >= 90) {
+            s += "XC";
+            input -= 90;
+        }
+        while (input >= 50) {
+            s += "L";
+            input -= 50;
+        }
+        while (input >= 40) {
+            s += "XL";
+            input -= 40;
+        }
+        while (input >= 10) {
+            s += "X";
+            input -= 10;
+        }
+        while (input >= 9) {
+            s += "IX";
+            input -= 9;
+        }
+        while (input >= 5) {
+            s += "V";
+            input -= 5;
+        }
+        while (input >= 4) {
+            s += "IV";
+            input -= 4;
+        }
+        while (input >= 1) {
+            s += "I";
+            input -= 1;
         }
         return s;
-    }
-    
-    static String convertitEnRomains(int n, boolean simplifie){
-        if(n >= 1 && n <= 2000){
-            int unites = n % 10;
-            int dizaines = (n / 10) % 10;
-            int centaines = (n / 100) % 10;
-            int milliers= (n / 1000) % 1000;
-            if(simplifie){
-                return (additif(milliers, 'M', '?') + additif(centaines, 'C', 'D') + additif(dizaines, 'X', 'L')+ additif(unites, 'I', 'V'));
-            }else {
-                return (soustractif(milliers, 'M', '?', '?') + soustractif(centaines, 'C', 'D', 'M') + soustractif(dizaines, 'X', 'L', 'C')+ soustractif(unites, 'I', 'V','X'));
-            }
-            
-        }else return "Nombre impossible à écrire en chiffres romains.";
     }
 
     @Override
     public String convertDateYears(String nbr) throws IllegalArgumentException {
-        //Implement your code
+        String jour = nbr.substring(0, 2);
+        String mois = nbr.substring(3, 5);
+        String annee = nbr.substring(6, 10);
         return "XV/III/MX";
     }
 
@@ -161,12 +148,11 @@ public class RomanConverterServiceImpl extends RemoteServiceServlet implements
         //Implement your code
         return new Integer(convertitEnDecimal(nbr));
     }
-   
 
     @Override
     public String convertArabeToRoman(Integer nbr) throws IllegalArgumentException {
         //Implement your code
-        return new String(convertitEnRomains(nbr, false));
+        return new String(convertitEnRomains(nbr));
     }
 
 }
