@@ -15,15 +15,26 @@ import org.insset.client.service.SoldeConverterService;
 @SuppressWarnings("serial")
 public class SoldeConverterServiceImpl extends RemoteServiceServlet implements
         SoldeConverterService {
-
-    @Override
-    public float CalculMontantFinal(float montantDepart, int pourcentage) throws IllegalArgumentException {
-        return montantDepart * (pourcentage / 100);
+    
+    public boolean isNombrePositif(float nbr) {
+        if (nbr < 0) 
+            throw new IllegalArgumentException("Montant > 0 svp !");
+        
+        return true;
     }
 
     @Override
-    public float CalculMontantDepart(float montantFinal, int pourcentage) throws IllegalArgumentException {
-        return montantFinal * (1 + (pourcentage / 100));
+    public float CalculMontantFinal(float montantDepart, float pourcentage) throws IllegalArgumentException {
+        if(isNombrePositif(montantDepart))
+            return montantDepart * (1 - (pourcentage / 100));
+        return -1;
+    }
+
+    @Override
+    public float CalculMontantDepart(float montantFinal, float pourcentage) throws IllegalArgumentException {
+        if(isNombrePositif(montantFinal))
+            return montantFinal / (1 - (pourcentage / 100));
+        return -1;
     }
 
     @Override

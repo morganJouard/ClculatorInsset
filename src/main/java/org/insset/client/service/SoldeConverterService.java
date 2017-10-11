@@ -15,10 +15,10 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("pourcentage")
 public interface SoldeConverterService extends RemoteService {
 
-    float CalculMontantFinal(float montantDepart, int pourcentage) throws IllegalArgumentException;
+    float CalculMontantFinal(float montantDepart, float pourcentage) throws IllegalArgumentException;
     
     float CalculRemise(float montantDepart, float montantFinal) throws IllegalArgumentException;
     
-    float CalculMontantDepart(float montantFinal, int pourcentage) throws IllegalArgumentException;
+    float CalculMontantDepart(float montantFinal, float pourcentage) throws IllegalArgumentException;
 }
 
