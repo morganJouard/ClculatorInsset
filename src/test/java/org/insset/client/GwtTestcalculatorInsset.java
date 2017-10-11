@@ -7,6 +7,8 @@ import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import org.insset.client.service.ExempleService;
 import org.insset.client.service.ExempleServiceAsync;
 import org.insset.shared.FieldVerifier;
+import org.junit.Test;
+import org.junit.Assert;
 
 /**
  * GWT JUnit <b>integration</b> tests must extend GWTTestCase. Using
@@ -29,7 +31,9 @@ public class GwtTestcalculatorInsset extends GWTTestCase {
 
     /**
      * Tests the FieldVerifier.
+     * 
      */
+    @Test
     public void testFieldVerifier() {
         assertFalse(FieldVerifier.isValidName(null));
         assertFalse(FieldVerifier.isValidName(""));
