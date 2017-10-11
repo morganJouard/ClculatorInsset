@@ -14,6 +14,7 @@ import com.google.gwt.user.client.rpc.RemoteService;
  */
 public interface SoldeConverterServiceAsync {
   float CalculMontantFinal(float montantDepart, int pourcentage, AsyncCallback<String> callback);
+  float CalculRemise(float montantDepart, float montantFinal, AsyncCallback<String> callback);
   float CalculMontantDepart(float montantFinal, int pourcentage, AsyncCallback<String> callback);
 }
 
