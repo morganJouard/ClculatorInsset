@@ -53,11 +53,18 @@ public class FieldVerifier {
      */
     public static boolean isNombreDecimalCorrect(float nbr) {
         if (nbr < 0 || nbr > 999999) 
-            throw new IllegalArgumentException("Montant entre 1 et 999 999 svp !");
+            return false;
         else if(String.valueOf(nbr)== null)
-            throw new NumberFormatException("Montant entre 1 et 999 999 svp !");
+            return false;
         
         return true;
+    }
+    
+    public static String CheckVirgule(String t){
+        if (t.contains(","))
+            return t.replace(',', '.');
+        
+        return t;
     }
     
     public static boolean isValidDecimal(Integer nbr) {

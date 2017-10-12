@@ -123,23 +123,16 @@ public class Pourcentage extends Composite{
 
         });
     }
-    
-    private void CheckVirgule(){
-        if (montantFinal.getText().contains(",")){
-            montantFinal.getText().replace(',', '.');
-        }else if(montantDepart.getText().contains(",")){
-            montantDepart.getText().replace(',', '.');
-        }
-    }
+    String montant;
     
     private void CalculMontantFinal() {
-        CheckVirgule();
-        if (!FieldVerifier.isNombreDecimalCorrect(Float.parseFloat(montantDepart.getText()))) {
+        montant = FieldVerifier.CheckVirgule(montantDepart.getText());
+        if (!FieldVerifier.isNombreDecimalCorrect(Float.parseFloat(montant))) {
             errorLabel.addStyleName("serverResponseLabelError");
             errorLabel.setText("Montant entre 1 et 999 999 svp !");
             return;
         }
-        service.CalculMontantFinal(Float.parseFloat(montantDepart.getText()), Float.parseFloat(pourcentage.getText()), new AsyncCallback<Float>() {
+        service.CalculMontantFinal(Float.parseFloat(montant), Float.parseFloat(FieldVerifier.CheckVirgule(pourcentage.getText())), new AsyncCallback<Float>() {
             public void onFailure(Throwable caught) {
                 // Show the RPC error message to the user
 //                Window.alert(SERVER_ERROR);
@@ -148,7 +141,7 @@ public class Pourcentage extends Composite{
             @Override
             public void onSuccess(Float result) {
                 errorLabel2.setText("");
-                new DialogBoxInssetPresenter("Calcul du montant final", montantDepart.getText() + "€ avec " + pourcentage.getText() + "%", String.valueOf(result) + "€, remise de " + Math.abs((result - Float.parseFloat(montantDepart.getText()))) + "€");
+                new DialogBoxInssetPresenter("Calcul du montant final", montant + "€ avec " + pourcentage.getText() + "%", String.valueOf(result) + "€, remise de " + Math.abs((result - Float.parseFloat(montant))) + "€");
             }
         });
     }
@@ -157,13 +150,13 @@ public class Pourcentage extends Composite{
      * call server
      */
     private void CalculMontantDepart() {
-        CheckVirgule();
-        if (!FieldVerifier.isNombreDecimalCorrect(Float.parseFloat(montantFinal.getText()))) {
+        montant = FieldVerifier.CheckVirgule(montantFinal.getText());
+        if (!FieldVerifier.isNombreDecimalCorrect(Float.parseFloat(montant))) {
             errorLabel2.addStyleName("serverResponseLabelError");
             errorLabel2.setText("Montant entre 1 et 999 999 svp !");
             return;
         }
-        service.CalculMontantDepart(Float.parseFloat(montantFinal.getText()), Float.parseFloat(pourcentage.getText()), new AsyncCallback<Float>() {
+        service.CalculMontantDepart(Float.parseFloat(montant), Float.parseFloat(FieldVerifier.CheckVirgule(pourcentage.getText())), new AsyncCallback<Float>() {
             public void onFailure(Throwable caught) {
                 // Show the RPC error message to the user
             }
@@ -171,7 +164,7 @@ public class Pourcentage extends Composite{
             @Override
             public void onSuccess(Float result) {
                 errorLabel2.setText(" ");
-                new DialogBoxInssetPresenter("Calcul du montant de départ", montantFinal.getText()+ "€ avec " + pourcentage.getText() + "%", String.valueOf(result) + "€");
+                new DialogBoxInssetPresenter("Calcul du montant de départ", montant+ "€ avec " + pourcentage.getText() + "%", String.valueOf(result) + "€");
             }
         });
     }

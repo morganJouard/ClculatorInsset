@@ -66,22 +66,28 @@ public class SoldeConverterServiceImplTest {
         assertEquals(0, resultat, 0);
     }
     
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testCalculMontantFinalSup999999() {
         //Given
         float montant = 1000000.00f;
         
         //When
         float resultat = serviceSolde.CalculMontantFinal(montant, 10);
+        
+        //Then
+        assertEquals(-1, resultat, 0.1);
     }
     
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testCalculMontantFinalException() {
         //Given
         float montant = -45.00f;
         
         //When
         float resultat = serviceSolde.CalculMontantFinal(montant, 10);
+        
+        //Then
+        assertEquals(-1, resultat, 0.1);
     }
 
     /**
@@ -111,22 +117,28 @@ public class SoldeConverterServiceImplTest {
         assertEquals(0, resultat, 0);
     }
     
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testCalculMontantDepartSup999999() {
         //Given
         float montant = 1000000.00f;
         
         //When
         float resultat = serviceSolde.CalculMontantDepart(montant, 10);
+        
+        //Then
+        assertEquals(-1, resultat, 0.1);
     }
     
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testCalculMontantDepartException() {
         //Given
         float montant = -45.00f;
         
         //When
         float resultat = serviceSolde.CalculMontantDepart(montant, 10);
+        
+        //Then
+        assertEquals(-1, resultat, 0.1);
     }
 
     /**
