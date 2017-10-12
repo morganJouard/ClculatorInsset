@@ -12,33 +12,29 @@
                 <g:Label>Entrez votre montant de départ :</g:Label>
             </g:FlowPanel>
             <g:FlowPanel>          
-              <g:TextBox ui:field="nom" text="montant"/>
+              <g:TextBox ui:field="montantDepart" text="montant"/> <g:TextBox ui:field="pourcentage" text="%"/>
+              <g:SubmitButton ui:field="boutonConvertDToF" text="Calculer"/>
+              <g:ResetButton ui:field="boutonClearR" text="Clear"/>
             </g:FlowPanel>
             <g:FlowPanel>
-                <g:Label ui:field="errorLabel" ></g:Label>
-            </g:FlowPanel>
-            <g:FlowPanel ui:field="formActions">
-                <g:SubmitButton ui:field="boutonCalculMontantFinal" text="Convertir"/>
-                <g:ResetButton ui:field="boutonClear" text="Clear"/>
+                <g:Label ui:field="errorLabel"></g:Label>
             </g:FlowPanel>
         </g:FlowPanel>
         
-        <g:FlowPanel>
-        </g:FlowPanel>
         
         <g:FlowPanel>
             <g:FlowPanel>
                 <g:Label>Entrez votre montant Final</g:Label>
             </g:FlowPanel>
             <g:FlowPanel>          
-              <g:TextBox ui:field="valA" text="Entrer une valeur"/>
+              <g:TextBox ui:field="montantFinal" text="Entrer une valeur"/>
             </g:FlowPanel>
             <g:FlowPanel>
-                <g:Label ui:field="errorLabelAToR"></g:Label>
+                <g:Label ui:field="errorLabel2"></g:Label>
             </g:FlowPanel>
             <g:FlowPanel>
-                <g:SubmitButton ui:field="boutonConvertAToR" text="Convertir"/>
-                <g:ResetButton ui:field="boutonClearA" text="Clear"/>
+                <g:SubmitButton ui:field="boutonConvertFToD" text="Calculer"/>
+                <g:ResetButton ui:field="boutonClearR2" text="Clear"/>
             </g:FlowPanel>
         </g:FlowPanel>
     </div>

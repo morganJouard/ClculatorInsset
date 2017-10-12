@@ -67,9 +67,9 @@ public class SoldeConverterServiceImplTest {
     }
     
     @Test(expected = IllegalArgumentException.class)
-    public void testCalculMontantFinalSup2000() {
+    public void testCalculMontantFinalSup999999() {
         //Given
-        float montant = 2500.00f;
+        float montant = 1000000.00f;
         
         //When
         float resultat = serviceSolde.CalculMontantFinal(montant, 10);
@@ -112,9 +112,9 @@ public class SoldeConverterServiceImplTest {
     }
     
     @Test(expected = IllegalArgumentException.class)
-    public void testCalculMontantDepartSup2000() {
+    public void testCalculMontantDepartSup999999() {
         //Given
-        float montant = 2500.00f;
+        float montant = 1000000.00f;
         
         //When
         float resultat = serviceSolde.CalculMontantDepart(montant, 10);

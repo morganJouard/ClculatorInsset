@@ -13,8 +13,8 @@ import com.google.gwt.user.client.rpc.RemoteService;
  * @author talend
  */
 public interface SoldeConverterServiceAsync {
-  float CalculMontantFinal(float montantDepart, int pourcentage, AsyncCallback<String> callback);
-  float CalculRemise(float montantDepart, float montantFinal, AsyncCallback<String> callback);
-  float CalculMontantDepart(float montantFinal, int pourcentage, AsyncCallback<String> callback);
+  void CalculMontantFinal(float montantDepart, float pourcentage, AsyncCallback<Float> callback);
+  void CalculRemise(float montantDepart, float montantFinal, AsyncCallback<Float> callback);
+  void CalculMontantDepart(float montantFinal, float pourcentage, AsyncCallback<Float> callback);
 }
 

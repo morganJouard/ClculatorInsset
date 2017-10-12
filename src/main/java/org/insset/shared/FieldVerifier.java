@@ -51,7 +51,17 @@ public class FieldVerifier {
      * @param name the name to validate
      * @return true if valid, false if invalid
      */
+    public static boolean isNombreDecimalCorrect(float nbr) {
+        if (nbr < 0 || nbr > 999999) 
+            throw new IllegalArgumentException("Montant entre 1 et 999 999 svp !");
+        else if(String.valueOf(nbr)== null)
+            throw new NumberFormatException("Montant entre 1 et 999 999 svp !");
+        
+        return true;
+    }
+    
     public static boolean isValidDecimal(Integer nbr) {
+        //Implement your code
         return true;
     }
 

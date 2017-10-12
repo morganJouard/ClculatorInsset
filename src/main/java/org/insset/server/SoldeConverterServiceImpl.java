@@ -7,6 +7,7 @@ package org.insset.server;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import org.insset.client.service.SoldeConverterService;
+import org.insset.shared.FieldVerifier;
 
 /**
  *
@@ -15,24 +16,17 @@ import org.insset.client.service.SoldeConverterService;
 @SuppressWarnings("serial")
 public class SoldeConverterServiceImpl extends RemoteServiceServlet implements
         SoldeConverterService {
-    
-    public boolean isNombreCorrect(float nbr) {
-        if (nbr < 0 || nbr > 2000) 
-            throw new IllegalArgumentException("Montant entre 0 et 2000 svp !");
-        
-        return true;
-    }
 
     @Override
     public float CalculMontantFinal(float montantDepart, float pourcentage) throws IllegalArgumentException {
-        if(isNombreCorrect(montantDepart))
+        if(FieldVerifier.isNombreDecimalCorrect(montantDepart))
             return montantDepart * (1 - (pourcentage / 100));
         return -1;
     }
 
     @Override
     public float CalculMontantDepart(float montantFinal, float pourcentage) throws IllegalArgumentException {
-        if(isNombreCorrect(montantFinal))
+        if(FieldVerifier.isNombreDecimalCorrect(montantFinal))
             return montantFinal / (1 - (pourcentage / 100));
         return -1;
     }
