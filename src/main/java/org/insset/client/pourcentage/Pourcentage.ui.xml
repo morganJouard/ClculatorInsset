@@ -8,8 +8,37 @@
     <div class="bs-section">
 
         <g:FlowPanel>
-          <g:FlowPanel>
-                <g:Label>laaaaaa</g:Label>
+            <g:FlowPanel>
+                <g:Label>Entrez votre montant de départ :</g:Label>
+            </g:FlowPanel>
+            <g:FlowPanel>          
+              <g:TextBox ui:field="nom" text="montant"/>
+            </g:FlowPanel>
+            <g:FlowPanel>
+                <g:Label ui:field="errorLabel" ></g:Label>
+            </g:FlowPanel>
+            <g:FlowPanel ui:field="formActions">
+                <g:SubmitButton ui:field="boutonCalculMontantFinal" text="Convertir"/>
+                <g:ResetButton ui:field="boutonClear" text="Clear"/>
+            </g:FlowPanel>
+        </g:FlowPanel>
+        
+        <g:FlowPanel>
+        </g:FlowPanel>
+        
+        <g:FlowPanel>
+            <g:FlowPanel>
+                <g:Label>Entrez votre montant Final</g:Label>
+            </g:FlowPanel>
+            <g:FlowPanel>          
+              <g:TextBox ui:field="valA" text="Entrer une valeur"/>
+            </g:FlowPanel>
+            <g:FlowPanel>
+                <g:Label ui:field="errorLabelAToR"></g:Label>
+            </g:FlowPanel>
+            <g:FlowPanel>
+                <g:SubmitButton ui:field="boutonConvertAToR" text="Convertir"/>
+                <g:ResetButton ui:field="boutonClearA" text="Clear"/>
             </g:FlowPanel>
         </g:FlowPanel>
     </div>

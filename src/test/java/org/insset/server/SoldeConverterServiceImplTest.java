@@ -67,6 +67,15 @@ public class SoldeConverterServiceImplTest {
     }
     
     @Test(expected = IllegalArgumentException.class)
+    public void testCalculMontantFinalSup2000() {
+        //Given
+        float montant = 2500.00f;
+        
+        //When
+        float resultat = serviceSolde.CalculMontantFinal(montant, 10);
+    }
+    
+    @Test(expected = IllegalArgumentException.class)
     public void testCalculMontantFinalException() {
         //Given
         float montant = -45.00f;
@@ -100,6 +109,15 @@ public class SoldeConverterServiceImplTest {
         
         //Then
         assertEquals(0, resultat, 0);
+    }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void testCalculMontantDepartSup2000() {
+        //Given
+        float montant = 2500.00f;
+        
+        //When
+        float resultat = serviceSolde.CalculMontantDepart(montant, 10);
     }
     
     @Test(expected = IllegalArgumentException.class)
