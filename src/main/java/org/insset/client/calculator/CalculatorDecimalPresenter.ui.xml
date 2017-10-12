@@ -2,23 +2,61 @@
          xmlns:g='urn:import:com.google.gwt.user.client.ui'
         xmlns:menu="urn:import:org.insset.client.menu">
 
-  <g:HTMLPanel>
-<div class="bs-section">
+<g:HTMLPanel>
     <menu:Menu ui:field="menu"/>
-      <!--<texte:TitrePage size="1" ui:field="titrePage"/>-->
-<!--<menu:Menu ui:field="menu"/>-->
-      <!--<message:MessageZone ui:field="messageZone"/>-->
-      <!--<g:Form ui:field="form" role="form">-->
+    <h1>Projet de mise en pratique Scrum</h1>       
+    <div class="bs-section">
         <g:FlowPanel>
-          <g:FormPanel ui:field="aapForm"/>
-          <g:FlowPanel ui:field="test" >
-            <g:TextBox ui:field="textbox" text="Enregistrer"/>
-          </g:FlowPanel>
-          <g:FlowPanel ui:field="formActions" >
-            <g:SubmitButton ui:field="boutonEnregistrer" text="Enregistrer"/>
-            <!--<g:InlineHTML>&nbsp;</g:InlineHTML>-->
-            <g:ResetButton ui:field="boutonAnnuler" text="Annuler"/>
-          </g:FlowPanel>
+            <g:FlowPanel>
+                <g:Label>Quelle valeur voulez-vous convertir en decimal</g:Label>
+            </g:FlowPanel>
+            <g:FlowPanel>          
+              <g:TextBox ui:field="valR" text="Entrer une valeur"/>
+              <g:SubmitButton ui:field="boutonConvertRToA" text="Convertir"/>
+            </g:FlowPanel>
+            <g:FlowPanel>
+                <g:Label ui:field="errorLabelRToA" ></g:Label>
+            </g:FlowPanel>
+            <g:FlowPanel >
+                
+                <g:ResetButton ui:field="boutonClearR" text="Clear"/>
+            </g:FlowPanel>
+        </g:FlowPanel>
+        <g:FlowPanel>
+        </g:FlowPanel>
+        <g:FlowPanel>
+            <g:FlowPanel>
+                <g:Label>Quelle valeur voulez-vous convertir en chiffre romain</g:Label>
+            </g:FlowPanel>
+            <g:FlowPanel>          
+              <g:TextBox ui:field="valA" text="Entrer une valeur"/>
+              <g:SubmitButton ui:field="boutonConvertAToR" text="Convertir"/>
+            </g:FlowPanel>
+            <g:FlowPanel>
+                <g:Label ui:field="errorLabelAToR" ></g:Label>
+            </g:FlowPanel>
+            <g:FlowPanel>
+                
+                <g:ResetButton ui:field="boutonClearA" text="Clear"/>
+            </g:FlowPanel>
+        </g:FlowPanel>
+        <g:FlowPanel>
+        </g:FlowPanel>
+        <g:FlowPanel>
+            <g:FlowPanel>
+                <g:Label>Quelle date voulez-vous convertir?</g:Label>
+            </g:FlowPanel>
+            <g:FlowPanel>          
+              <g:TextBox ui:field="valD" text="Entrer une valeur"/>
+              <g:SubmitButton ui:field="boutonConvertD" text="Convertir"/>
+            </g:FlowPanel>
+            <g:FlowPanel>
+                <g:Label ui:field="errorLabelD" ></g:Label>
+            </g:FlowPanel>
+            <g:FlowPanel>
+                
+                <g:ResetButton ui:field="boutonClearD" text="Clear"/>
+            </g:FlowPanel>
         </g:FlowPanel>
       <!--</g:Form>-->
     </div>

@@ -5,8 +5,8 @@
     <div>
         <g:MenuBar ui:field="menu">
            <g:MenuItem ui:field="accueil">Exemple</g:MenuItem>
-           <g:MenuItem ui:field="decimal">Decimal</g:MenuItem>
            <g:MenuItem ui:field="romain">Romain</g:MenuItem>
+           <g:MenuItem ui:field="pourcentage">Pourcentage</g:MenuItem>
         </g:MenuBar>
 
     </div>

@@ -30,7 +30,7 @@ public class Menu extends Composite {
      * Menu : accueil
      */
     @UiField
-    public MenuItem decimal;
+    public MenuItem pourcentage;
     /**
      * Menu : accueil
      */
@@ -56,12 +56,12 @@ public class Menu extends Composite {
                 History.newItem("exemple", true);
             }
         });
-        decimal.setScheduledCommand(new Scheduler.ScheduledCommand() {
+        pourcentage.setScheduledCommand(new Scheduler.ScheduledCommand() {
 
             @Override
             public void execute() {
 
-                History.newItem("decimal", true);
+                History.newItem("pourcentage", true);
             }
         });
         romain.setScheduledCommand(new Scheduler.ScheduledCommand() {
@@ -69,7 +69,7 @@ public class Menu extends Composite {
             @Override
             public void execute() {
 
-                History.newItem("romain", true);
+                History.newItem("roman", true);
             }
         });
     }

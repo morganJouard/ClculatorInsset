@@ -39,4 +39,46 @@ public class FieldVerifier {
         }
         return true;
     }
+
+    /**
+     * Verifies that the specified value is valide.
+     *
+     * In this example, we only require that the name is at least four
+     * characters. In your application, you can use more complex checks to
+     * ensure that usernames, passwords, email addresses, URLs, and other fields
+     * have the proper syntax.
+     *
+     * @param name the name to validate
+     * @return true if valid, false if invalid
+     */
+    public static boolean isNombreDecimalCorrect(float nbr) {
+        if (nbr < 0 || nbr > 999999) 
+            return false;
+        else if(String.valueOf(nbr)== null)
+            return false;
+        
+        return true;
+    }
+    
+    public static String CheckVirgule(String t){
+        if (t.contains(","))
+            return t.replace(',', '.');
+        
+        return t;
+    }
+    
+    public static boolean isValidDecimal(Integer nbr) {
+        //Implement your code
+        return true;
+    }
+
+    public static boolean isValidRoman(String nbr) {
+        //Implement your code
+        return true;
+    }
+
+    public static boolean isValidDate(String date) {
+        //Implement your code
+        return true;
+    }
 }

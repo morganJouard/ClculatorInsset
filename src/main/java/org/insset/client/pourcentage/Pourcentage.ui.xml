@@ -1,0 +1,42 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+         xmlns:g='urn:import:com.google.gwt.user.client.ui'
+        xmlns:menu="urn:import:org.insset.client.menu">
+
+  <g:HTMLPanel>
+    <menu:Menu ui:field="menu"/>
+    <h1>Projet de mise en pratique Scrum</h1>       
+    <div class="bs-section">
+
+        <g:FlowPanel>
+            <g:FlowPanel>
+                <g:Label>Entrez votre montant de départ :</g:Label>
+            </g:FlowPanel>
+            <g:FlowPanel>          
+              <g:TextBox ui:field="montantDepart" text="montant"/> <g:TextBox ui:field="pourcentage" text="%"/>
+              <g:SubmitButton ui:field="boutonConvertDToF" text="Calculer"/>
+              <g:ResetButton ui:field="boutonClearR" text="Clear"/>
+            </g:FlowPanel>
+            <g:FlowPanel>
+                <g:Label ui:field="errorLabel"></g:Label>
+            </g:FlowPanel>
+        </g:FlowPanel>
+        
+        
+        <g:FlowPanel>
+            <g:FlowPanel>
+                <g:Label>Entrez votre montant Final</g:Label>
+            </g:FlowPanel>
+            <g:FlowPanel>          
+              <g:TextBox ui:field="montantFinal" text="Entrer une valeur"/>
+            </g:FlowPanel>
+            <g:FlowPanel>
+                <g:Label ui:field="errorLabel2"></g:Label>
+            </g:FlowPanel>
+            <g:FlowPanel>
+                <g:SubmitButton ui:field="boutonConvertFToD" text="Calculer"/>
+                <g:ResetButton ui:field="boutonClearR2" text="Clear"/>
+            </g:FlowPanel>
+        </g:FlowPanel>
+    </div>
+  </g:HTMLPanel>
+</ui:UiBinder>

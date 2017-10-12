@@ -33,7 +33,7 @@ public class DialogBoxInssetPresenter extends DialogBox {
         // We can set the id of a widget by accessing its Element
         closeButton.getElement().setId("closeButton");
 
-        //        // Add a handler to close the DialogBox
+        //Add a handler to close the DialogBox
         closeButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
                 hide();
