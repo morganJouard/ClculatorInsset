@@ -87,7 +87,7 @@
   <build>
     <!-- Output classes directly into the webapp, so that IDEs and "mvn process-classes" update them in DevMode -->
     <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
-
+<pluginManagement>
     <plugins>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -128,6 +128,7 @@
         </configuration>
       </plugin>
     </plugins>
+   </pluginManagement>
     
   </build>
 
