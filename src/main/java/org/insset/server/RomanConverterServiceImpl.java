@@ -34,14 +34,10 @@ public class RomanConverterServiceImpl extends RemoteServiceServlet implements R
     }};
 
     @Override
-    public String convertDateYears(String nbr) throws IllegalArgumentException {
+    public String convertDateYears(String nbr) throws IllegalArgumentException, NumberFormatException {
         int[] date;
 
-        try {
-            date = Arrays.stream(nbr.split("/")).mapToInt(Integer::parseInt).toArray();
-        } catch (Error error) {
-            throw new IllegalArgumentException();
-        }
+        date = Arrays.stream(nbr.split("/")).mapToInt(Integer::parseInt).toArray();
 
         if (date.length != 3 || date[0] < 1 || date[0] > 31 || date[1] < 1 || date[1] > 12 || date[2] < 0 || date[2] > 2000) {
             throw new IllegalArgumentException();

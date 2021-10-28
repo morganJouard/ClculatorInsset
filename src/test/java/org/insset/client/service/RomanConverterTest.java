@@ -13,12 +13,11 @@
  import org.junit.BeforeClass;
 
  /**
-  *
   * @author user
   */
  public class RomanConverterTest {
 
-     private RomanConverterServiceImpl instance = new RomanConverterServiceImpl();
+     private final RomanConverterServiceImpl instance = new RomanConverterServiceImpl();
 
      public RomanConverterTest() {
      }
@@ -43,6 +42,14 @@
      /**
       * Test de la methode convertArabeToRoman
       */
+     @org.junit.Test(expected = IllegalArgumentException.class)
+     public void testConvertArabeToRomanNOK() {
+         instance.convertArabeToRoman(3000);
+     }
+
+     /**
+      * Test de la methode convertArabeToRoman
+      */
      @org.junit.Test
      public void testConvertArabeToRomanOK() {
          Assert.assertEquals(
@@ -53,15 +60,35 @@
 
      /**
       * Test de la methode convertRomanToArabe
-      */
-     /*@org.junit.Test
-     public void testConvertRomanToArabOK() {
-         Assert.assertTrue(
-                 new Integer(1027).equals(
-                         instance.convertRomanToArabe("MXXVII")
-                 ));
-     }*/
+      **/
+     @org.junit.Test(expected = IllegalArgumentException.class)
+     public void testConvertRomanToArabeNOK() {
+         instance.convertRomanToArabe("MMMCMLVIII");
+     }
 
+     /**
+      * Test de la methode convertRomanToArabe
+      */
+     @org.junit.Test
+     public void testConvertRomanToArabOK() {
+         Assert.assertEquals(new Integer(1027), instance.convertRomanToArabe("MXXVII"));
+     }
+
+     /**
+      * Test de la methode convertDateYears
+      */
+     @org.junit.Test(expected = IllegalArgumentException.class)
+     public void testConvertDateYearsNOK() {
+         instance.convertDateYears("04/06");
+     }
+
+     /**
+      * Test de la methode convertDateYears
+      */
+     @org.junit.Test(expected = NumberFormatException.class)
+     public void testConvertDateYearsNotNumber() {
+         instance.convertDateYears("YY/MM/MMMM");
+     }
 
      /**
       * Test de la methode convertDateYears
