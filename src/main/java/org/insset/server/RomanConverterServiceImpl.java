@@ -8,13 +8,29 @@ package org.insset.server;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import org.insset.client.service.RomanConverterService;
 
+import java.util.TreeMap;
+
 /**
- *
  * @author user
  */
 @SuppressWarnings("serial")
-public class RomanConverterServiceImpl extends RemoteServiceServlet implements
-        RomanConverterService {
+public class RomanConverterServiceImpl extends RemoteServiceServlet implements RomanConverterService {
+
+    private final static TreeMap<Integer, String> mapIntToRoman = new TreeMap<Integer, String>() {{
+        put(1000, "M");
+        put(900, "CM");
+        put(500, "D");
+        put(400, "CD");
+        put(100, "C");
+        put(90, "XC");
+        put(50, "L");
+        put(40, "XL");
+        put(10, "X");
+        put(9, "IX");
+        put(5, "V");
+        put(4, "IV");
+        put(1, "I");
+    }};
 
     @Override
     public String convertDateYears(String nbr) throws IllegalArgumentException {
@@ -30,8 +46,11 @@ public class RomanConverterServiceImpl extends RemoteServiceServlet implements
 
     @Override
     public String convertArabeToRoman(Integer nbr) throws IllegalArgumentException {
-        //Implement your code
-        return new String("XVXX");
+        int l = mapIntToRoman.floorKey(nbr);
+        if (nbr == l) {
+            return mapIntToRoman.get(nbr);
+        }
+        return mapIntToRoman.get(l) + convertArabeToRoman(nbr - l);
     }
 
 }
