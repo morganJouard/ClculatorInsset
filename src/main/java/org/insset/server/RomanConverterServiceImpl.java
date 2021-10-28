@@ -8,6 +8,7 @@ package org.insset.server;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import org.insset.client.service.RomanConverterService;
 
+import java.util.Arrays;
 import java.util.TreeMap;
 
 /**
@@ -33,9 +34,16 @@ public class RomanConverterServiceImpl extends RemoteServiceServlet implements R
     }};
 
     @Override
-    public String convertDateYears(String nbr) throws IllegalArgumentException {
-        //Implement your code
-        return "XV/III/MX";
+    public String convertDateYears(String nbr) throws IllegalArgumentException, NumberFormatException {
+        int[] date;
+
+        date = Arrays.stream(nbr.split("/")).mapToInt(Integer::parseInt).toArray();
+
+        if (date.length != 3 || date[0] < 1 || date[0] > 31 || date[1] < 1 || date[1] > 12 || date[2] < 0 || date[2] > 2000) {
+            throw new IllegalArgumentException();
+        }
+
+        return String.format("%s/%s/%s", this.convertArabeToRoman(date[0]), this.convertArabeToRoman(date[1]), this.convertArabeToRoman(date[2]));
     }
 
     @Override
@@ -46,11 +54,16 @@ public class RomanConverterServiceImpl extends RemoteServiceServlet implements R
 
     @Override
     public String convertArabeToRoman(Integer nbr) throws IllegalArgumentException {
+        if (nbr < 1 || nbr > 2000) {
+            throw new IllegalArgumentException();
+        }
+
         int l = mapIntToRoman.floorKey(nbr);
+
         if (nbr == l) {
             return mapIntToRoman.get(nbr);
         }
+
         return mapIntToRoman.get(l) + convertArabeToRoman(nbr - l);
     }
-
 }
