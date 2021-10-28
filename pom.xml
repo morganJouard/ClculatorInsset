@@ -19,7 +19,10 @@
     <maven.compiler.target>1.7</maven.compiler.target>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    
+    <sonar.host.url>http://localhost:9010/sonar</sonar.host.url>
   </properties>
+  
 <pluginRepositories>
         <pluginRepository>
             <id>central</id>
@@ -86,7 +89,21 @@
     <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
 
     <plugins>
-
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.sonarsource.scanner.maven</groupId>
+          <artifactId>sonar-maven-plugin</artifactId>
+          <version>3.6.0.1398</version>
+        </plugin>
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>0.7.0.201403182114</version>
+        </plugin>
       <!-- GWT Maven Plugin -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -111,6 +128,7 @@
         </configuration>
       </plugin>
     </plugins>
+    
   </build>
 
 </project>
