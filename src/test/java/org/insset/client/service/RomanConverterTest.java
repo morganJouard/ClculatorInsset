@@ -43,16 +43,16 @@
      /**
       * Test de la methode convertArabeToRoman
       */
-     /*@org.junit.Test
+     @org.junit.Test
      public void testConvertArabeToRomanOK() {
          Assert.assertEquals(
                  "MXXVII",
                  instance.convertArabeToRoman(1027)
          );
-     }*/
+     }
 
      /**
-      * Test de la methode convertArabeToRoman
+      * Test de la methode convertRomanToArabe
       */
      /*@org.junit.Test
      public void testConvertRomanToArabOK() {
@@ -64,13 +64,10 @@
 
 
      /**
-      * Test de la methode convertArabeToRoman
+      * Test de la methode convertDateYears
       */
-     /*@org.junit.Test
+     @org.junit.Test
      public void testConvertDateYearsOK() {
-         Assert.assertEquals(
-                 "07/12/1995",
-                 instance.convertDateYears("VII/XII/MCMXCV")
-         );
-     }*/
+         Assert.assertEquals("VII/XII/MCMXCV", instance.convertDateYears("07/12/1995"));
+     }
  }
