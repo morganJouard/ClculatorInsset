@@ -13,9 +13,9 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  */
 public interface PercentagesConverterServiceAsync {
 
-    void divide(int dividend, int divisor, AsyncCallback<Double> async);
+    void divide(double dividend, double divisor, AsyncCallback<Double> async);
 
-    void calculateBasePrice(Double finalPrice, Double discountPercentage, AsyncCallback<Double[]> async);
+    void calculateBasePrice(int finalPrice, int discountPercentage, AsyncCallback<Double[]> async);
 
-    void calculateFinalPrice(Double basePrice, Double discountPercentage, AsyncCallback<Double[]> async);
+    void calculateFinalPrice(int basePrice, int discountPercentage, AsyncCallback<Double[]> async);
 }

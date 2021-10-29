@@ -83,4 +83,17 @@ public class FieldVerifier {
 
         return date.length == 3 && date[0] >= 1 && date[0] <= 31 && date[1] >= 1 && date[1] <= 12 && date[2] >= 0 && date[2] <= 2000;
     }
+
+    public static boolean isValidEnteredPrice(int price) {
+        return price >= 0 && price <= 10000;
+    }
+
+    public static boolean isValidPercentage(int percentage) {
+        return percentage > 0 && percentage <= 100;
+
+    }
+
+    public static boolean isValidDivisionOperands(int dividend, int diviser) {
+        return dividend >= 0 && dividend <= 10000 & diviser > 0 && diviser <= 10000;
+    }
 }

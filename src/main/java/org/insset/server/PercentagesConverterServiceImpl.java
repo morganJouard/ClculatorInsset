@@ -20,8 +20,13 @@ public class PercentagesConverterServiceImpl extends RemoteServiceServlet implem
      * @return the final price and the discount amount.
      */
     @Override
-    public Double[] calculateFinalPrice(Double basePrice, Double discountPercentage) {
-        return new Double[]{3., 4.};
+    public Double[] calculateFinalPrice(int basePrice, int discountPercentage) {
+        double discount = basePrice * divide(discountPercentage, 100.);
+
+        return new Double[]{
+                basePrice - discount,
+                discount
+        };
     }
 
     /**
@@ -30,12 +35,21 @@ public class PercentagesConverterServiceImpl extends RemoteServiceServlet implem
      * @return the base price and the discount amount.
      */
     @Override
-    public Double[] calculateBasePrice(Double finalPrice, Double discountPercentage) {
-        return new Double[]{4., 5.};
+    public Double[] calculateBasePrice(int finalPrice, int discountPercentage) {
+        double price = finalPrice / ( 1. -  divide((double)discountPercentage, 100.));
+
+        return new Double[]{
+                price - finalPrice,
+                price
+        };
     }
 
     @Override
-    public Double divide(int dividend, int divisor) {
-        return 5.;
+    public Double divide(double dividend, double divisor) throws IllegalArgumentException {
+        if (divisor == 0) {
+            throw new IllegalArgumentException("Divisor can't be out of interval 1 to 10000");
+        }
+
+        return dividend / divisor;
     }
 }

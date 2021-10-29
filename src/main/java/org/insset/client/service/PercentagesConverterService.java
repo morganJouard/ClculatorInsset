@@ -15,9 +15,9 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("percentageConvert")
 public interface PercentagesConverterService extends RemoteService {
 
-    Double[] calculateFinalPrice(Double basePrice, Double discountPercentage);
+    Double[] calculateFinalPrice(int basePrice, int discountPercentage);
 
-    Double[] calculateBasePrice(Double finalPrice, Double discountPercentage);
+    Double[] calculateBasePrice(int finalPrice, int discountPercentage);
 
-    Double divide(int dividend, int divisor);
+    Double divide(double dividend, double divisor);
 }

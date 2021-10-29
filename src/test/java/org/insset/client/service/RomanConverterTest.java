@@ -71,7 +71,7 @@
       */
      @org.junit.Test
      public void testConvertRomanToArabOK() {
-         Assert.assertEquals(new Integer(1027), instance.convertRomanToArabe("MXXVII"));
+         Assert.assertEquals(new Integer(435), instance.convertRomanToArabe("CDXXXV"));
      }
 
      /**
