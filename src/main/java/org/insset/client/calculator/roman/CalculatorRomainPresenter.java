@@ -131,7 +131,7 @@ public class CalculatorRomainPresenter extends Composite {
         service.convertRomanToArabe(valR.getText(), new AsyncCallback<Integer>() {
             public void onFailure(Throwable caught) {
                 // Show the RPC error message to the user
-//                Window.alert(SERVER_ERROR);
+//              Window.alert(SERVER_ERROR);
             }
 
             public void onSuccess(Integer result) {
