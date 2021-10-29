@@ -41,7 +41,7 @@ public class PercentagesConverterTest {
     @org.junit.Test
     public void testCalculateBasePrice() {
         Assert.assertArrayEquals(
-                new Double[]{20., 100.},
+                new Double[]{100., 20.},
                 instance.calculateBasePrice(80, 20)
         );
     }

@@ -96,6 +96,31 @@ public class CalculatorPercentagesPresenter extends Composite {
                 divide();
             }
         });
+
+        boutonClearFinalPrice.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                priceBeforeDiscount.setText("");
+                discountPercentage1.setText("");
+                errorLabelFinalPrice.setText("");
+            }
+        });
+        boutonClearBasePrice.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                finalPrice.setText("");
+                discountPercentage2.setText("");
+                errorBasePrice.setText("");
+            }
+        });
+        boutonClearDivision.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                dividend.setText("");
+                diviser.setText("");
+                errorLabelDivision.setText("");
+            }
+        });
     }
 
     /**

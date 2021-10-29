@@ -36,11 +36,11 @@ public class PercentagesConverterServiceImpl extends RemoteServiceServlet implem
      */
     @Override
     public Double[] calculateBasePrice(int finalPrice, int discountPercentage) {
-        double price = finalPrice / ( 1. -  divide((double)discountPercentage, 100.));
+        double price = finalPrice / (1. - divide((double) discountPercentage, 100.));
 
         return new Double[]{
-                price - finalPrice,
-                price
+                price,
+                price - finalPrice
         };
     }
 
