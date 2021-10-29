@@ -9,5 +9,5 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("pourcentage")
 public interface PourcentageService extends RemoteService {
 
-    String inverserChaine(String name) throws IllegalArgumentException;
+    String inverserChaine(String name, ) throws IllegalArgumentException;
 }
