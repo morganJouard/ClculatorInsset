@@ -7,7 +7,7 @@
     <h1>Projet de mise en pratique Scrum</h1>       
     <div class="bs-section">
 
-        <g:FlowPanel>
+            <g:FlowPanel>
           <g:FormPanel/>
           
             <g:FlowPanel>
@@ -21,11 +21,25 @@
             <g:FlowPanel>
                 <g:Label ui:field="errorLabel" ></g:Label>
             </g:FlowPanel>
-            <g:FlowPanel ui:field="formActions" >
+            <g:FlowPanel ui:field="formActions">
                 <g:SubmitButton ui:field="boutonDiviser" text="Diviser"/>
                 <g:ResetButton ui:field="boutonClear" text="Clear"/>
             </g:FlowPanel>
-        </g:FlowPanel>
+           
+            <g:FlowPanel>
+                <g:Label>Entrez votre prix puis votre réduction !</g:Label>
+            </g:FlowPanel>
+            <g:FlowPanel>          
+              <g:TextBox ui:field="prix" text="Prix"/>
+              <g:TextBox ui:field="reduction" text="Réduction"/>
+            </g:FlowPanel> 
+            <g:FlowPanel>
+                <g:SubmitButton ui:field="boutonCalculer" text="Calculer"/>
+                <g:ResetButton ui:field="boutonReset" text="Reset"/>
+            </g:FlowPanel>
+            </g:FlowPanel>
+            
+      
     </div>
   </g:HTMLPanel>
 </ui:UiBinder>

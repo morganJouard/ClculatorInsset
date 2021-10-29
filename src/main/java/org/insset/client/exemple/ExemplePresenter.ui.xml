@@ -16,7 +16,7 @@
             <g:FlowPanel>          
               <g:TextBox ui:field="nom" text="Entrer votre nom"/>
             </g:FlowPanel>
-            <g:FlowPanel>
+             <g:FlowPanel>
                 <g:Label ui:field="errorLabel" ></g:Label>
             </g:FlowPanel>
             <g:FlowPanel ui:field="formActions" >

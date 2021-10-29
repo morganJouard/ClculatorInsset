@@ -39,7 +39,18 @@ public class PourcentagePresenter extends Composite{
     @UiField
     public TextBox deuxiemeEntier;
     @UiField
-    public Label errorLabel;
+    public Label errorLabel;  
+    /*
+    @UiField
+    public ResetButton boutonReset;
+    @UiField
+    public SubmitButton boutonCalculer;
+    @UiField
+    public TextBox prix;
+    @UiField
+    public TextBox reduction;
+    */
+    
     
     private static final String SERVER_ERROR = "An error occurred while "
             + "attempting to contact the server. Please check your network "
@@ -75,6 +86,22 @@ public class PourcentagePresenter extends Composite{
             }
 
         });
+        /*
+        boutonCalculer.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                prix.setText("resulat");
+                reduction.setText("200000%");
+            }
+        });
+        boutonReset.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                prix.setText("");
+                reduction.setText("");
+            }
+        });
+         */
     }
 
     private void contacterService() {
