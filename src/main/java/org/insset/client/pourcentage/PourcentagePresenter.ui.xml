@@ -1,0 +1,31 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+         xmlns:g='urn:import:com.google.gwt.user.client.ui'
+        xmlns:menu="urn:import:org.insset.client.menu">
+
+  <g:HTMLPanel>
+    <menu:Menu ui:field="menu"/>
+    <h1>Projet de mise en pratique Scrum</h1>       
+    <div class="bs-section">
+
+        <g:FlowPanel>
+          <g:FormPanel/>
+          
+            <g:FlowPanel>
+                <g:Label>Entrez vos entier pour la division !</g:Label>
+            </g:FlowPanel>
+            <g:FlowPanel>          
+              <g:TextBox ui:field="premierEntier" text="1er Entier"/>
+              <g:Label>/</g:Label>
+              <g:TextBox ui:field="deuxiemeEntier" text="2eme Entier"/>
+            </g:FlowPanel>
+            <g:FlowPanel>
+                <g:Label ui:field="errorLabel" ></g:Label>
+            </g:FlowPanel>
+            <g:FlowPanel ui:field="formActions" >
+                <g:SubmitButton ui:field="boutonDiviser" text="Diviser"/>
+                <g:ResetButton ui:field="boutonClear" text="Clear"/>
+            </g:FlowPanel>
+        </g:FlowPanel>
+    </div>
+  </g:HTMLPanel>
+</ui:UiBinder>

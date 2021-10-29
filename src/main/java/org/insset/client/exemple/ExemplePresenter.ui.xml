@@ -11,7 +11,7 @@
           <g:FormPanel/>
           
             <g:FlowPanel>
-                <g:Label>Quelle est votre nom ?</g:Label>
+                <g:Label>Entrez vos entier pour la division !</g:Label>
             </g:FlowPanel>
             <g:FlowPanel>          
               <g:TextBox ui:field="nom" text="Entrer votre nom"/>
