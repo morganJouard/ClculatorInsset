@@ -52,17 +52,48 @@ public class FieldVerifier {
      * @return true if valid, false if invalid
      */
     public static boolean isValidDecimal(Integer nbr) {
-        //Implement your code
-        return true;
+        return nbr >= 1 && nbr <= 2000;
     }
 
     public static boolean isValidRoman(String nbr) {
-        //Implement your code
+        int nbrLength = nbr.length();
+
+        if (nbrLength == 0 || (nbr.contains("MM") && nbrLength > 2)) {
+            return false;
+        }
+
+        for (int charPosition = 0; charPosition < nbrLength; charPosition++) {
+            if (!DateUtils.mapRomanToInt.containsKey(nbr.charAt(charPosition))) {
+                return false;
+            }
+        }
+
         return true;
     }
 
-    public static boolean isValidDate(String date) {
-        //Implement your code
-        return true;
+    public static boolean isValidDate(String dateStr) {
+        int[] date;
+
+        try {
+            date = DateUtils.convertDateStringToIntArray(dateStr);
+        }
+        catch (Exception e) {
+            return false;
+        }
+
+        return date.length == 3 && date[0] >= 1 && date[0] <= 31 && date[1] >= 1 && date[1] <= 12 && date[2] >= 0 && date[2] <= 2000;
+    }
+
+    public static boolean isValidEnteredPrice(int price) {
+        return price >= 0 && price <= 10000;
+    }
+
+    public static boolean isValidPercentage(int percentage) {
+        return percentage > 0 && percentage <= 100;
+
+    }
+
+    public static boolean isValidDivisionOperands(int dividend, int diviser) {
+        return dividend >= 0 && dividend <= 10000 & diviser > 0 && diviser <= 10000;
     }
 }
