@@ -17,7 +17,11 @@
     <!-- GWT needs at least java 1.6 -->
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
-
+    
+    <sonar.host.url>
+        http://localhost:9010/sonar
+    </sonar.host.url>
+    
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 <pluginRepositories>
@@ -109,6 +113,12 @@
             <module>org.insset.calculatorInsset</module>
           </modules>
         </configuration>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.6.0.1398</version>
       </plugin>
     </plugins>
   </build>
