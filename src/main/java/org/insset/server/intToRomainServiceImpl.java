@@ -4,11 +4,15 @@
  * and open the template in the editor.
  */
 package org.insset.server;
+
+import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import org.insset.client.service.intToRomainService;
+
 /**
  *
  * @author insset
  */
-public class intToRomainServiceImpl {
+public class intToRomainServiceImpl extends RemoteServiceServlet implements intToRomainService{
     public String intToRomain(int number){
         if (number < 1 || number > 2000) {
             throw new IllegalArgumentException("le nombre doit etre entre 1 et 2000.");
