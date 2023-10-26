@@ -46,12 +46,12 @@ public class divisionEuclidienneServiceImplTest {
         int dividende = 785;
         int diviseur = 36;
         divisionEuclidienneServiceImpl instance = new divisionEuclidienneServiceImpl();
-        modulo expResult = new modulo();
-        expResult.resultat = 21;
-        expResult.reste = 29;
-        modulo result = instance.divisionEuclidienne(dividende, diviseur);
-        assertEquals(expResult.resultat, result.resultat);
-        assertEquals(expResult.reste, result.reste);
+        int[] expResult = new int[2];
+        expResult[0] = 21;
+        expResult[1] = 29;
+        int[] result = instance.divisionEuclidienne(dividende, diviseur);
+        assertEquals(expResult[0], result[0]);
+        assertEquals(expResult[1], result[1]);
     }
     
 }

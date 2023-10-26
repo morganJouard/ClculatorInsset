@@ -5,13 +5,16 @@
  */
 package org.insset.server;
 
+import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import org.insset.client.service.divisionEuclidienneService;
 
 
-public class divisionEuclidienneServiceImpl {
-    public modulo divisionEuclidienne(int dividende, int diviseur) {
-        modulo modulo = new modulo();
-        modulo.resultat = dividende / diviseur;
-        modulo.reste = dividende % diviseur;
-        return modulo;
+
+public class divisionEuclidienneServiceImpl extends RemoteServiceServlet implements divisionEuclidienneService{
+    public int[] divisionEuclidienne(int dividende, int diviseur) {
+        int[] valeurs = new int[2];
+        valeurs[0] = dividende / diviseur;
+        valeurs[1] = dividende % diviseur;
+        return valeurs;
     }
 }
