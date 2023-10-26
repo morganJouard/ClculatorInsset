@@ -51,10 +51,24 @@ public class FieldVerifier {
      * @param name the name to validate
      * @return true if valid, false if invalid
      */
+    public static boolean isValidDiviseur(Integer nbr) {
+        if (nbr == null) {
+            return false;
+        }
+        return true;
+    }
+    public static boolean isValidDividende(Integer nbr) {
+        if ((nbr == null) || (nbr == 0)) {
+            return false;
+        }
+        return true;
+    }
+    
     public static boolean isValidDecimal(Integer nbr) {
         //Implement your code
         return true;
     }
+    
 
     public static boolean isValidRoman(String nbr) {
         //Implement your code

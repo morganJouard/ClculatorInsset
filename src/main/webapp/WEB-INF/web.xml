@@ -28,7 +28,15 @@
   </servlet-mapping>
   
   <!-- Add your servlet -->
-  
+    <servlet>
+    <servlet-name>decimal</servlet-name>
+    <servlet-class>org.insset.server.divisionEuclidienneServiceImpl</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>decimal</servlet-name>
+    <url-pattern>/calculatorInsset/decimal</url-pattern>
+  </servlet-mapping>
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>calculatorInsset.html</welcome-file>
