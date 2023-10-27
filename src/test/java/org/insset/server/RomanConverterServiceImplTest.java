@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author insset
  */
-public class RomainToIntServiceTest {
+public class RomanConverterServiceImplTest {
     
-    public RomainToIntServiceTest() {
+    public RomanConverterServiceImplTest() {
     }
     
     @BeforeClass
@@ -37,20 +37,28 @@ public class RomainToIntServiceTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of romainToInt method, of class RomainToIntService.
-     */
     @Test
     public void testRomainToInt() {
-       RomainToIntService instance = new RomainToIntService();
+       RomanConverterServiceImpl instance = new RomanConverterServiceImpl();
 
         String nbRoman = "";
         int expResult = 0;
-        int result = instance.romainToInt(nbRoman);
+        int result = instance.convertRomanToArabe(nbRoman);
         assertEquals(expResult, result);
         nbRoman = "IX";
         expResult = 9;
-        result = instance.romainToInt(nbRoman);
+        result = instance.convertRomanToArabe(nbRoman);
+        assertEquals(expResult, result);
+    }
+    
+    
+    @Test
+    public void testIntToRomain() {
+        RomanConverterServiceImpl instance = new RomanConverterServiceImpl();
+        System.out.println("intToRomain");
+        int number = 5;
+        String expResult = "V";
+        String result = instance.convertArabeToRoman(number);
         assertEquals(expResult, result);
     }
     
