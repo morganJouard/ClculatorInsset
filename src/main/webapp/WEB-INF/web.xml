@@ -30,7 +30,7 @@
   <!-- Add your servlet -->
     <servlet>
     <servlet-name>decimal</servlet-name>
-    <servlet-class>org.insset.server.divisionEuclidienneServiceImpl</servlet-class>
+    <servlet-class>org.insset.server.DecimalServiceImpl</servlet-class>
   </servlet>
 
   <servlet-mapping>

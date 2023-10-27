@@ -5,12 +5,20 @@
  */
 package org.insset.server;
 
-/**
- *
- * @author insset
- */
-public class getMontantDepartServiceImpl {
-    double getMontantDepart(double nb, double pourcentage){
+import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import org.insset.client.service.DecimalService;
+
+
+
+public class DecimalServiceImpl extends RemoteServiceServlet implements DecimalService{
+    public int[] divisionEuclidienne(int dividende, int diviseur) {
+        int[] valeurs = new int[2];
+        valeurs[0] = dividende / diviseur;
+        valeurs[1] = dividende % diviseur;
+        return valeurs;
+    }
+    
+    public double getMontantDepart(double nb, double pourcentage){
         if (pourcentage < 0 || pourcentage > 100) {
             throw new IllegalArgumentException("Le pourcentage de réduction doit être compris entre 0 et 100");
         }

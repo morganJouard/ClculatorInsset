@@ -16,8 +16,8 @@ import com.google.gwt.user.client.ui.SubmitButton;
 import com.google.gwt.user.client.ui.TextBox;
 import org.insset.client.message.dialogbox.DialogBoxInssetPresenter;
 
-import org.insset.client.service.divisionEuclidienneService;
-import org.insset.client.service.divisionEuclidienneServiceAsync;
+import org.insset.client.service.DecimalService;
+import org.insset.client.service.DecimalServiceAsync;
 import org.insset.shared.FieldVerifier;
 
 
@@ -32,21 +32,31 @@ import org.insset.shared.FieldVerifier;
  */
 public class DecimalPresenter extends Composite {
     
+    @UiField
+    public ResetButton boutonClearPourcent;
+    @UiField
+    public SubmitButton boutonEnregistrerPourcent;
+    @UiField
+    public TextBox montant;
+    @UiField
+    public TextBox pourcent;
+    @UiField
+    public Label errorLabelPourcent;
 
 
     @UiField
-    public ResetButton boutonClear;
+    public ResetButton boutonClearDivision;
     @UiField
-    public SubmitButton boutonEnregistrer;
+    public SubmitButton boutonEnregistrerDivision;
     @UiField
     public TextBox diviseur;
     @UiField
     public TextBox dividende;
     @UiField
-    public Label errorLabel;
+    public Label errorLabelDivision;
     
     //private final ExempleServiceAsync service = GWT.create(ExempleService.class);
-    private final divisionEuclidienneServiceAsync service = GWT.create(divisionEuclidienneService.class);
+    private final DecimalServiceAsync service = GWT.create(DecimalService.class);
 
     interface MainUiBinder extends UiBinder<HTMLPanel, DecimalPresenter> {
     }
@@ -65,25 +75,41 @@ public class DecimalPresenter extends Composite {
      * Init des handler
      */
     private void initHandler() {
-        boutonClear.addClickHandler(new ClickHandler() {
+        boutonClearDivision.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
                 diviseur.setText("");
                 dividende.setText("");
-                errorLabel.setText("");
+                errorLabelDivision.setText("");
             }
         });
-        boutonEnregistrer.addClickHandler(new ClickHandler() {
+        boutonEnregistrerDivision.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
                 makeDivision();
             }
 
         });
+        
+        boutonClearPourcent.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                montant.setText("");
+                pourcent.setText("");
+                errorLabelPourcent.setText("");
+            }
+        });
+        boutonEnregistrerPourcent.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                findMontant();
+            }
+
+        });
     }
     
     private void makeDivision() {
-        errorLabel.setText("");
+        errorLabelDivision.setText("");
         final String Sdiviseur = diviseur.getText();        
         final String Sdividende = dividende.getText();
         
@@ -93,34 +119,34 @@ public class DecimalPresenter extends Composite {
         try {
            diviseurValue = Integer.parseInt(Sdiviseur);
         } catch (NumberFormatException e) {
-            errorLabel.addStyleName("serverResponseLabelError");
-            errorLabel.setText("Le diviseur n'est pas un entier valide!!");
+            errorLabelDivision.addStyleName("serverResponseLabelError");
+            errorLabelDivision.setText("Le diviseur n'est pas un entier valide!!");
         }
         try {
            dividendeValue = Integer.parseInt(Sdividende);
         } catch (NumberFormatException e) {
-            errorLabel.addStyleName("serverResponseLabelError");
-            errorLabel.setText("Le dividende n'est pas un entier valide!!");
+            errorLabelDivision.addStyleName("serverResponseLabelError");
+            errorLabelDivision.setText("Le dividende n'est pas un entier valide!!");
         }
         
         
         if (!FieldVerifier.isValidDiviseur(diviseurValue)) {
-            errorLabel.addStyleName("serverResponseLabelError");
-            errorLabel.setText("Le diviseur n'est pas un entier valide!!");
+            errorLabelDivision.addStyleName("serverResponseLabelError");
+            errorLabelDivision.setText("Le diviseur n'est pas un entier valide!!");
             return;
         }
         if (!FieldVerifier.isValidDividende(dividendeValue)) {
-            errorLabel.addStyleName("serverResponseLabelError");
-            errorLabel.setText("Le dividende n'est pas un entier valide!!");
+            errorLabelDivision.addStyleName("serverResponseLabelError");
+            errorLabelDivision.setText("Le dividende n'est pas un entier valide!!");
             return;
         }
         
         
-        service.divisionEuclidienne(Integer.parseInt(Sdividende), Integer.parseInt(Sdiviseur), new AsyncCallback<int[]>(){
+        service.divisionEuclidienne(diviseurValue, dividendeValue, new AsyncCallback<int[]>(){
 
             @Override
             public void onFailure(Throwable caught) {
-                errorLabel.setText(caught.toString());
+                errorLabelDivision.setText(caught.toString());
             }
 
             @Override
@@ -132,5 +158,49 @@ public class DecimalPresenter extends Composite {
         });
     }
     
+    private void findMontant() {
+        errorLabelPourcent.setText("");
+        final String Smontant = montant.getText();        
+        final String Spourcent = pourcent.getText();
+        
+        int montantValue = 0;
+        int pourcentValue = 0;
+        
+        try {
+           montantValue = Integer.parseInt(Smontant);
+        } catch (NumberFormatException e) {
+            errorLabelPourcent.addStyleName("serverResponseLabelError");
+            errorLabelPourcent.setText("Le montant n'est pas un entier valide!!");
+        }
+        try {
+           pourcentValue = Integer.parseInt(Spourcent);
+        } catch (NumberFormatException e) {
+            errorLabelPourcent.addStyleName("serverResponseLabelError");
+            errorLabelPourcent.setText("Le pourcentage n'est pas un entier valide!!");
+        }
+        
+        if (!FieldVerifier.isValidMontant(montantValue)) {
+            errorLabelDivision.addStyleName("serverResponseLabelError");
+            errorLabelDivision.setText("Le montant doit etre positif!!");
+            return;
+        }
+        if (!FieldVerifier.isValidPourcent(pourcentValue)) {
+            errorLabelDivision.addStyleName("serverResponseLabelError");
+            errorLabelDivision.setText("Le pourcentage doit etre compris entre 0 et 100");
+            return;
+        }
+        
+        service.getMontantDepart(montantValue, pourcentValue, new AsyncCallback<Double>(){
 
+            @Override
+            public void onFailure(Throwable caught) {
+                errorLabelPourcent.setText(caught.toString());
+            }
+
+            @Override
+            public void onSuccess(Double result) {
+                new DialogBoxInssetPresenter("Montant de depart :", "Resultat", result.toString());
+            }
+        });
+    }
 }

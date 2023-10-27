@@ -11,6 +11,8 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  *
  * @author insset
  */
-public interface divisionEuclidienneServiceAsync {
+public interface DecimalServiceAsync {
     void divisionEuclidienne(int dividende, int diviseur, AsyncCallback<int[]> callback);
+    
+    void getMontantDepart(double nb, double pourcentage, AsyncCallback<Double> callback);
 }
