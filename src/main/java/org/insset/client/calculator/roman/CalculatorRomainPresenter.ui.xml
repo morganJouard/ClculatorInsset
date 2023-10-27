@@ -47,7 +47,7 @@
                 <g:Label>date</g:Label>
             </g:FlowPanel>
             <g:FlowPanel>          
-              <g:TextBox ui:field="valD" text="Entrer une valeur"/>
+              <g:TextBox ui:field="valD" text="jour/mois/annee"/>
             </g:FlowPanel>
             <g:FlowPanel>
                 <g:Label ui:field="errorLabelD" ></g:Label>

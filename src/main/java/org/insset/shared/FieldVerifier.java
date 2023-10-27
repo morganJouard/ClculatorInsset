@@ -1,5 +1,8 @@
 package org.insset.shared;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 /**
  * <p>
  * FieldVerifier validates that the name the user enters is valid.
@@ -78,18 +81,47 @@ public class FieldVerifier {
     }
     
     public static boolean isValidDecimal(Integer nbr) {
-        //Implement your code
-        return true;
+        try {
+            Integer.parseInt(String.valueOf(nbr));
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
     
+    private static final String[] ROMAINS_UNITE = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+    private static final String[] ROMAINS_DIZAINE = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
+    private static final String[] ROMAINS_CENTENAIRE = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
+    private static final String[] ROMAINS_MILLENAIRE = {"", "M", "MM", "MMM"};
 
     public static boolean isValidRoman(String nbr) {
-        //Implement your code
-        return true;
+    for (int i = 0; i < ROMAINS_MILLENAIRE.length; i++) {
+        for (int j = 0; j < ROMAINS_CENTENAIRE.length; j++) {
+            for (int k = 0; k < ROMAINS_DIZAINE.length; k++) {
+                for (int l = 0; l < ROMAINS_UNITE.length; l++) {
+                                        String romanNumber = ROMAINS_MILLENAIRE[i] + ROMAINS_CENTENAIRE[j] + ROMAINS_DIZAINE[k] + ROMAINS_UNITE[l];
+                    if (nbr.equals(romanNumber)) {
+                        return true;
+                    }
+                }
+            }
+        }
     }
+    return false;
+                
+    }
+    
+    public static boolean isValidDate(int jour, int mois, int annee) {
+        if (annee < 1 || mois < 1 || mois > 12) {
+            return false;
+        }
 
-    public static boolean isValidDate(String date) {
-        //Implement your code
-        return true;
+        int[] joursParMois = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+        if (mois == 2 && (annee % 4 == 0 && (annee % 100 != 0 || annee % 400 == 0))) {
+            joursParMois[2] = 29; // Février en année bissextile
+        }
+
+        return jour >= 1 && jour <= joursParMois[mois];
     }
 }

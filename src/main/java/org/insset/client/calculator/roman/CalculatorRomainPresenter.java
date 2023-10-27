@@ -177,11 +177,28 @@ public class CalculatorRomainPresenter extends Composite {
      */
     private void convertDate() {
         //Verif
-        if (!FieldVerifier.isValidDate(valD.getText())) {
-            errorLabelAToR.addStyleName("serverResponseLabelError");
-            errorLabelAToR.setText("Format incorect");
+        
+        String[] parts = valD.getText().split("/");
+        if (parts.length != 3) {
+            errorLabelD.setText("Format incorect");
+        }
+        int jour = 0;
+        int mois = 0;
+        int annee = 0;
+        try {
+        jour = Integer.parseInt(parts[0]);
+        mois = Integer.parseInt(parts[1]);
+        annee = Integer.parseInt(parts[2]);
+        } catch (NumberFormatException e) {
+            errorLabelD.addStyleName("serverResponseLabelError");
+            errorLabelD.setText("Le diviseur n'est pas un entier valide!!");
+        }
+        if (!FieldVerifier.isValidDate(jour, mois, annee)) {
+            errorLabelD.addStyleName("serverResponseLabelError");
+            errorLabelD.setText("Format incorect");
             return;
         }
+        
         //call server
         service.convertDateYears(valD.getText(), new AsyncCallback<String>() {
             public void onFailure(Throwable caught) {

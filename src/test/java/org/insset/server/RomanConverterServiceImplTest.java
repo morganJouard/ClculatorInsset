@@ -62,4 +62,46 @@ public class RomanConverterServiceImplTest {
         assertEquals(expResult, result);
     }
     
+      @Test
+    public void testDateToRomain() {
+        RomanConverterServiceImpl instance = new RomanConverterServiceImpl();
+        String dateValide = "10/05/1990";
+        String resultatAttendu = "X/V/MCMXC";
+        String resultat = instance.convertDateYears(dateValide);
+        assertEquals(resultatAttendu, resultat);
+
+        // Test de conversion d'une autre date valide
+        String autreDateValide = "01/12/2022";
+        String autreResultatAttendu = "I/XII/MMXXII";
+        String autreResultat = instance.convertDateYears(autreDateValide);
+        assertEquals(autreResultatAttendu, autreResultat);
+
+        // Test de conversion d'une date non valide (mois incorrect)
+        String dateMoisIncorrect = "10/13/1990";
+        try {
+            instance.convertDateYears(dateMoisIncorrect);
+            fail("La conversion d'une date non valide aurait dû générer une exception.");
+        } catch (IllegalArgumentException e) {
+            // Exception attendue
+        }
+
+        // Test de conversion d'une date non valide (jour incorrect)
+        String dateJourIncorrect = "32/05/1990";
+        try {
+            instance.convertDateYears(dateJourIncorrect);
+            fail("La conversion d'une date non valide aurait dû générer une exception.");
+        } catch (IllegalArgumentException e) {
+            // Exception attendue
+        }
+
+        // Test de conversion d'une date non valide (année négative)
+        String dateAnneeNegative = "10/05/-1990";
+        try {
+            instance.convertDateYears(dateAnneeNegative);
+            fail("La conversion d'une date non valide aurait dû générer une exception.");
+        } catch (IllegalArgumentException e) {
+            // Exception attendue
+        }
+    }
+    
 }
