@@ -8,7 +8,7 @@
     <div class="bs-section">
         <g:FlowPanel>
             <g:FlowPanel>
-                <g:Label>Quelle valeur voulez-vous convertir en decimal</g:Label>
+                <g:Label>Mettez un nombre romain pour convertir en decimal</g:Label>
             </g:FlowPanel>
             <g:FlowPanel>          
               <g:TextBox ui:field="valR" text="Entrer une valeur"/>
