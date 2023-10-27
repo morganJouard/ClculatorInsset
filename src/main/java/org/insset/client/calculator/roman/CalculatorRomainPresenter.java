@@ -125,18 +125,20 @@ public class CalculatorRomainPresenter extends Composite {
     private void convertRomanToArabe() {
         if (!FieldVerifier.isValidRoman(valR.getText())) {
             errorLabelRToA.addStyleName("serverResponseLabelError");
-            errorLabelRToA.setText("Format incorect");
+            errorLabelRToA.setText("Format incorrect");
             return;
         }
         service.convertRomanToArabe(valR.getText(), new AsyncCallback<Integer>() {
             public void onFailure(Throwable caught) {
-                // Show the RPC error message to the user
-//                Window.alert(SERVER_ERROR);
+                // Gérez l'erreur ici
+                errorLabelRToA.addStyleName("serverResponseLabelError");
+                errorLabelRToA.setText("Une erreur est survenue : " + caught.getMessage());
             }
 
             public void onSuccess(Integer result) {
-                errorLabelRToA.setText(" ");
-                new DialogBoxInssetPresenter("Convertion Roman to arabe", valR.getText(), String.valueOf(result));
+                errorLabelRToA.removeStyleName("serverResponseLabelError");
+                errorLabelRToA.setText("");
+                new DialogBoxInssetPresenter("Conversion Roman to Arabe", valR.getText(), String.valueOf(result));
             }
         });
     }
