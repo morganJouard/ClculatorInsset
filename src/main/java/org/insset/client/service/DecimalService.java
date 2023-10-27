@@ -12,6 +12,8 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
  * @author insset
  */
 @RemoteServiceRelativePath("decimal")
-public interface divisionEuclidienneService extends RemoteService{
+public interface DecimalService extends RemoteService{
     int[] divisionEuclidienne(int dividende, int diviseur) throws IllegalArgumentException;
+    
+    double getMontantDepart(double nb, double pourcentage) throws IllegalArgumentException;
 }

@@ -64,6 +64,19 @@ public class FieldVerifier {
         return true;
     }
     
+    public static boolean isValidMontant(Integer nbr) {
+        if (nbr == null || nbr < 0) {
+            return false;
+        }
+        return true;
+    }
+    public static boolean isValidPourcent(Integer nbr) {
+        if ((nbr == null) || (nbr < 0)|| (nbr > 100)) {
+            return false;
+        }
+        return true;
+    }
+    
     public static boolean isValidDecimal(Integer nbr) {
         //Implement your code
         return true;

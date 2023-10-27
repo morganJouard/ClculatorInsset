@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author insset
  */
-public class divisionEuclidienneServiceImplTest {
+public class DecimalServiceImplTest {
     
-    public divisionEuclidienneServiceImplTest() {
+    public DecimalServiceImplTest() {
     }
     
     @BeforeClass
@@ -37,15 +37,38 @@ public class divisionEuclidienneServiceImplTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of divisionEuclidienne method, of class divisionEuclidienneServiceImpl.
-     */
     @Test
+    public void testGetMontantDepartOK() {
+        double nb = 80.0;
+        double pourcentage = 20.0;
+        DecimalServiceImpl instance = new DecimalServiceImpl();
+        double expResult = 100.0;
+        double result = instance.getMontantDepart(nb, pourcentage);
+        assertEquals(expResult, result, 0.0);
+    }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetMontantDepartNOKSup100() {
+        double nb = 80.0;
+        double pourcentage = 120.0;
+        DecimalServiceImpl instance = new DecimalServiceImpl();
+        instance.getMontantDepart(nb, pourcentage);
+    }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetMontantDepartNOKNegatif() {
+        double nb = 80.0;
+        double pourcentage = -20.0;
+        DecimalServiceImpl instance = new DecimalServiceImpl();
+        instance.getMontantDepart(nb, pourcentage);
+    }
+    
+        @Test
     public void testDivisionEuclidienne() {
         System.out.println("divisionEuclidienne");
         int dividende = 785;
         int diviseur = 36;
-        divisionEuclidienneServiceImpl instance = new divisionEuclidienneServiceImpl();
+        DecimalServiceImpl instance = new DecimalServiceImpl();
         int[] expResult = new int[2];
         expResult[0] = 21;
         expResult[1] = 29;

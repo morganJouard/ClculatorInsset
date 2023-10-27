@@ -8,7 +8,24 @@
         <div class="bs-section">
 
             <g:FlowPanel>
-                <g:FormPanel/>
+
+                <g:FlowPanel>
+                    <g:Label>Montant Pourcentage de Reduction</g:Label>
+                </g:FlowPanel>
+                <g:FlowPanel>          
+                  <g:TextBox ui:field="montant" text=""/>
+                  <g:TextBox ui:field="pourcent" text=""/>
+                </g:FlowPanel>
+                <g:FlowPanel>
+                    <g:Label ui:field="errorLabelPourcent" ></g:Label>
+                </g:FlowPanel>
+
+                    <g:SubmitButton ui:field="boutonEnregistrerPourcent" text="Envoyer"/>
+                    <g:ResetButton ui:field="boutonClearPourcent" text="Clear"/>
+
+            </g:FlowPanel>
+            <g:FlowPanel>
+
                 <g:FlowPanel>
                     <g:Label>Diviseur Dividende</g:Label>
                 </g:FlowPanel>
@@ -17,12 +34,12 @@
                   <g:TextBox ui:field="dividende" text=""/>
                 </g:FlowPanel>
                 <g:FlowPanel>
-                    <g:Label ui:field="errorLabel" ></g:Label>
+                    <g:Label ui:field="errorLabelDivision" ></g:Label>
                 </g:FlowPanel>
-                <g:FlowPanel ui:field="formActions" >
-                    <g:SubmitButton ui:field="boutonEnregistrer" text="Envoyer"/>
-                    <g:ResetButton ui:field="boutonClear" text="Clear"/>
-                </g:FlowPanel>
+
+                    <g:SubmitButton ui:field="boutonEnregistrerDivision" text="Envoyer"/>
+                    <g:ResetButton ui:field="boutonClearDivision" text="Clear"/>
+
             </g:FlowPanel>
         </div>
     </g:HTMLPanel>
